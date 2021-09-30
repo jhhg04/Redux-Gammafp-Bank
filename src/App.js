@@ -1,24 +1,36 @@
-import logo from './logo.svg';
 import './App.css';
+import DineroCuenta from './components/DineroCuenta';
+import MovimientoCuenta from './components/MovimientoCuenta';
+import money from './img/bitcoin.png';
+import { Provider } from 'react-redux';
+import store from './redux/store';
 
 function App() {
+  console.log(store.getState());
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Provider store={store}>
+      <div className='App container'>
+        <div className='row'>
+          <div className='col-12'>
+            <div className='card mt-5' style={{ maxWidth: '450px' }}>
+              <div className='row no-gutters'>
+                <div className='col-4'>
+                  <img src={money} alt='money' className='card-img pt-4 p-2' />
+                </div>
+                <div className='col-8'>
+                  <div className='card-body'>
+                    <div className='card-title h3 text-center'>
+                      <DineroCuenta />
+                    </div>
+                    <MovimientoCuenta />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </Provider>
   );
 }
 
